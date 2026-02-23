@@ -1,0 +1,24 @@
+[project]
+name = "vizza"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Janko Petkovic", email = "j.petkovic91@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+vizza = "vizza:main"
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "matplotlib>=3.10.8",
+    "pytest>=9.0.2",
+    "ruff>=0.15.2",
+]
