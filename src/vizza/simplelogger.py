@@ -6,25 +6,32 @@ class SimpleLogger:
     SPACING: int = 15
 
     @classmethod
-    def info(self, msg):
+    def _printer(self, color, tag, *msgs):
+        '''Handles multiline printing'''
+        print(f"{color}{tag:{self.SPACING}}{msgs[0]}{AC.reset}", file=stderr)
+        for m in msgs[1:]:
+            print(f"{color}{'':{self.SPACING}}{m}{AC.reset}", file=stderr)
+
+    @classmethod
+    def info(self, *msgs):
         tag = "[INFO]"
         color = AC.white
-        print(f"{color}{tag:{self.SPACING}}{msg}{AC.reset}", file=stderr)
+        self._printer(color, tag, *msgs)
 
     @classmethod
-    def warning(self, msg):
+    def warning(self, *msgs):
         tag = "[WARNING]"
         color = AC.yellow
-        print(f"{color}{tag:{self.SPACING}}{msg}{AC.reset}", file=stderr)
+        self._printer(color, tag, *msgs)
 
     @classmethod
-    def error(self, msg):
+    def error(self, *msgs):
         tag = "[ERROR]"
         color = AC.bold_red
-        print(f"{color}{tag:{self.SPACING}}{msg}{AC.reset}", file=stderr)
+        self._printer(color, tag, *msgs)
 
     @classmethod
-    def success(self, msg):
+    def success(self, *msgs):
         tag = "[SUCCESS]"
         color = AC.bold_white
-        print(f"{color}{tag:{self.SPACING}}{msg}{AC.reset}", file=stderr)
+        self._printer(color, tag, *msgs)
