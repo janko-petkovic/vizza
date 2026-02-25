@@ -433,19 +433,21 @@ wheels = [
 name = "vizza"
 version = "0.1.0"
 source = { editable = "." }
+dependencies = [
+    { name = "matplotlib" },
+]
 
 [package.dev-dependencies]
 dev = [
-    { name = "matplotlib" },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
+requires-dist = [{ name = "matplotlib", specifier = ">=3.10.8" }]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "matplotlib", specifier = ">=3.10.8" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "ruff", specifier = ">=0.15.2" },
 ]
